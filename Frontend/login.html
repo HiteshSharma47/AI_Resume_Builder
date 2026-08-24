@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             justify-content: center;
             padding: 80px 8%;
         }
+
         .login-box {
             background: #111;
             padding: 40px;
@@ -22,9 +24,11 @@
             max-width: 400px;
             text-align: center;
         }
+
         .login-box h2 {
             margin-bottom: 25px;
         }
+
         .login-box input {
             width: 100%;
             padding: 12px;
@@ -34,47 +38,76 @@
             color: white;
             border-radius: 5px;
         }
+
         .login-box input:focus {
             outline: none;
             border-color: purple;
         }
+
         .login-box button {
             width: 100%;
             margin-top: 10px;
         }
+
         .login-box p {
             margin-top: 20px;
             color: gray;
             font-size: 14px;
         }
+
         .login-box p a {
             color: purple;
             text-decoration: none;
         }
     </style>
 </head>
+
 <body>
     <nav>
         <h2>Resume<span>AI</span></h2>
         <div>
             <a href="index.html">Home</a>
             <a href="features.html">Features</a>
-            <a href="#">About</a>
+            <a href="about.html">About</a>
         </div>
         <div class="nav-buttons">
             <button class="login" onclick="window.location.href='login.html'">Login</button>
             <button>Get Started</button>
         </div>
     </nav>
-    
+
     <div class="login-container">
-        <div class="login-box">
+        <!-- Login Feature-->
+        <div class="login-box" id="login-form">
             <h2>Welcome Back</h2>
             <input type="email" placeholder="Email Address">
             <input type="password" placeholder="Password">
             <button>Login</button>
-            <p>Don't have an account? <a href="#">Sign up</a></p>
+            <p>Don't have an account? <a href="#" onclick="toggle('signup')">Sign up</a></p>
+        </div>
+
+        <!--SignUp Feature-->
+        <div class="login-box" id="signup-form" style="display: none;">
+            <h2>Create Account</h2>
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email Address">
+            <input type="password" placeholder="Password">
+            <button>Sign Up</button>
+            <p>Already have an account? <a href="#" onclick="toggle('login')">Login</a></p>
         </div>
     </div>
+
+    <script>
+        function toggle(val) {
+            if (val === 'login') {
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('signup-form').style.display = 'none';
+            } else {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('signup-form').style.display = 'block';
+            }
+        }
+    </script>
 </body>
+
 </html>
