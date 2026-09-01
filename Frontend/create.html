@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Resume - ResumeAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 8% 20px;
+        }
+        .page-header h1 {
+            font-size: 40px;
+        }
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 8% 80px;
+        }
+        .form-section {
+            margin-bottom: 30px;
+        }
+        .form-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .form-section h3 span {
+            color: purple;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-group label {
+            display: block;
+            color: gray;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid gray;
+            color: white;
+            border-radius: 5px;
+            font-family: Arial;
+            font-size: 14px;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: purple;
+        }
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .section-divider {
+            border: none;
+            border-top: 1px solid #333;
+            margin: 30px 0;
+        }
+        .form-container > button {
+            width: 100%;
+            margin-top: 10px;
+            font-size: 16px;
+            padding: 14px;
+        }
+        .add-btn {
+            background: transparent;
+            border: 1px dashed gray;
+            color: gray;
+            width: 100%;
+            padding: 10px;
+            font-size: 13px;
+        }
+        .add-btn:hover {
+            border-color: purple;
+            color: purple;
+            background: transparent;
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>Resume<span>AI</span></h2>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="about.html">About</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="login" onclick="window.location.href='login.html'">Login</button>
+            <button onclick="window.location.href='create.html'">Get Started</button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Create Your <span>Resume</span></h1>
+        <p class="text" style="max-width: 500px; margin: 0 auto;">Fill in your details and let our AI help you build a professional resume.</p>
+    </div>
+
+    <div class="form-container">
+
+        <div class="form-section">
+            <h3>👤 Personal <span>Information</span></h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="fullName" placeholder="Alex Morgan">
+                </div>
+                <div class="form-group">
+                    <label>Job Title</label>
+                    <input type="text" id="jobTitle" placeholder="Software Engineer">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="alex@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="phone" placeholder="+1 234 567 890">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" id="location" placeholder="New York, NY">
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="form-section">
+            <h3>📝 Professional <span>Summary</span></h3>
+            <div class="form-group">
+                <label>Brief summary about yourself</label>
+                <textarea id="summary" placeholder="Experienced software engineer with 5+ years building modern web applications..."></textarea>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="form-section">
+            <h3>💼 <span>Experience</span></h3>
+            <div id="experience-list">
+                <div class="experience-entry">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" placeholder="Tech Company">
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <input type="text" placeholder="Software Engineer">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="text" placeholder="Jan 2023">
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="text" placeholder="Present">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea placeholder="Describe your responsibilities and achievements..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addExperience()">+ Add Experience</button>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="form-section">
+            <h3>🎓 <span>Education</span></h3>
+            <div id="education-list">
+                <div class="education-entry">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Institution</label>
+                            <input type="text" placeholder="University Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Degree</label>
+                            <input type="text" placeholder="B.S. Computer Science">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Year</label>
+                            <input type="text" placeholder="2019">
+                        </div>
+                        <div class="form-group">
+                            <label>End Year</label>
+                            <input type="text" placeholder="2023">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addEducation()">+ Add Education</button>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="form-section">
+            <h3>🛠 <span>Skills</span></h3>
+            <div class="form-group">
+                <label>Enter your skills separated by commas</label>
+                <input type="text" id="skills" placeholder="JavaScript, React, Node.js, MongoDB">
+            </div>
+        </div>
+
+        <button onclick="generateResume()">Generate Resume with AI →</button>
+    </div>
+
+    <script>
+        function addExperience() {
+            var html = '<div class="experience-entry" style="margin-top:15px;">' +
+                '<div class="form-row"><div class="form-group"><label>Company</label><input type="text" placeholder="Tech Company"></div>' +
+                '<div class="form-group"><label>Role</label><input type="text" placeholder="Software Engineer"></div></div>' +
+                '<div class="form-row"><div class="form-group"><label>Start Date</label><input type="text" placeholder="Jan 2023"></div>' +
+                '<div class="form-group"><label>End Date</label><input type="text" placeholder="Present"></div></div>' +
+                '<div class="form-group"><label>Description</label><textarea placeholder="Describe your responsibilities and achievements..."></textarea></div></div>';
+            document.getElementById('experience-list').insertAdjacentHTML('beforeend', html);
+        }
+
+        function addEducation() {
+            var html = '<div class="education-entry" style="margin-top:15px;">' +
+                '<div class="form-row"><div class="form-group"><label>Institution</label><input type="text" placeholder="University Name"></div>' +
+                '<div class="form-group"><label>Degree</label><input type="text" placeholder="B.S. Computer Science"></div></div>' +
+                '<div class="form-row"><div class="form-group"><label>Start Year</label><input type="text" placeholder="2019"></div>' +
+                '<div class="form-group"><label>End Year</label><input type="text" placeholder="2023"></div></div></div>';
+            document.getElementById('education-list').insertAdjacentHTML('beforeend', html);
+        }
+
+        function generateResume() {
+            alert('Your resume is being generated with AI!');
+        }
+    </script>
+</body>
+</html>
